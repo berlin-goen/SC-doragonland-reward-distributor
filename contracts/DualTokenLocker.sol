@@ -82,6 +82,7 @@ contract DualTokenLocker is ITokenLocker, OwnableUpgradeable, ReentrancyGuardUpg
             MerkleProof.verify(_merkleProof, merkleRoots[_seasonID], node),
             "MerkleDistributor: Invalid proof."
         );
+        require(_dorAmount <= 1560 ether, "exceed maximum unlock");
         
         _unlock(_seasonID, _account, _dorAmount, _goldAmount);
     }
@@ -101,6 +102,7 @@ contract DualTokenLocker is ITokenLocker, OwnableUpgradeable, ReentrancyGuardUpg
         uint256 goldAmount = 0;
         uint128 startIndex = 0;
         for (uint256 i = 0; i < _seasonIDs.length; i++) {
+            require(_dorAmounts[i] <= 1560 ether, "exceed maximum unlock per season");
             require(block.timestamp > startReleaseTimestamps[_seasonIDs[i]], "still locked");
             require(claimed[_seasonIDs[i]][account] == 0, "Claimed once");
             // Verify the merkle proof.
