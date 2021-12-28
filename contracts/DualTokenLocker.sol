@@ -87,8 +87,6 @@ contract DualTokenLocker is ITokenLocker, OwnableUpgradeable, ReentrancyGuardUpg
         _unlock(_seasonID, _account, _dorAmount, _goldAmount);
     }
 
-    event Debug(uint256 index, bytes32[] proof);
-
     function batchUnlock(
         uint256[] memory _seasonIDs,
         uint256[] memory _indexs,
