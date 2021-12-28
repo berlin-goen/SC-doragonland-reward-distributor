@@ -1,0 +1,17 @@
+node_modules
+.env
+
+#Hardhat files
+cache
+artifacts
+.bsc_scan_key
+.secret
+.DS_STORE
+address_deployed.json
+.package-lock.json
+yarn.lock
+.openzeppelin/
+./artifacts/
+address.deployed.json
+address.mainnet.json
+deploy.config.js
